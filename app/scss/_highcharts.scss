@@ -84,11 +84,11 @@
   .highcharts-yaxis-labels {
     fill: $slate-secondary-5;
     // use this to change the axis label
-    & span:first-child {
-      &:after {
-        content: "%";
-    }
-    }
+    // & span:first-child {
+    //   &:after {
+    //     content: "%";
+    // }
+    // }
   }
   
   .highcharts-grid-line {
@@ -205,34 +205,34 @@
   /* Series options */
   /* Default colors */
   .highcharts-color-0 {
+    fill: none;
+    stroke: none;
+  }
+  
+  .highcharts-color-1 {
+    fill: $yellow-secondary-3;
+    stroke: $yellow-secondary-3;
+  }
+  
+  .highcharts-color-2 {
+    fill: none;
+    stroke: none;
+  }
+  
+  .highcharts-color-3 {
     fill: $green-primary;
     stroke: $green-primary;
   }
   
-  .highcharts-color-1 {
-    fill: $slate-secondary-3;
-    stroke: $slate-secondary-3;
-  }
-  
-  .highcharts-color-2 {
-    fill: $purple-primary;
-    stroke: $purple-primary;
-  }
-  
-  .highcharts-color-3 {
-    fill: $yellow-primary;
-    stroke: $yellow-primary;
-  }
-  
   .highcharts-color-4 {
-    fill: $blue-primary;
-    stroke: $blue-primary;
+    fill: $green-secondary-5;
+    stroke: $green-secondary-5;
   }
   
-  // .highcharts-color-5 {
-  //   fill: #f15c80;
-  //   stroke: #f15c80;
-  // }
+  .highcharts-color-5 {
+    fill: $green-primary;
+    stroke: $green-primary;
+  }
   
   // .highcharts-color-6 {
   //   fill: #e4d354;

@@ -27,13 +27,13 @@ Highcharts.setOptions({
     }
 });
 
-let chartId = document.getElementById("chart-container");
+let chartIdBullReturn = document.getElementById("chart-container-bull-return");
 
 // checks for the chart ID and displays a backup image if the browser can't find it
 setTimeout(function() {
-    if(chartId.innerHTML === "") {
+    if(chartIdBullReturn.innerHTML === "") {
         // console.log('noId');
-        let chartArea = document.getElementsByClassName("chart-area");
+        let chartArea = document.getElementsByClassName("chart-area-bull-return");
         for(var i = 0; i < chartArea.length; i++) {
             chartArea[i].style.display = "none";
         } 
@@ -45,18 +45,19 @@ setTimeout(function() {
 },500);
 
 function drawHighcharts() {
-    Highcharts.chart(chartId, {
+    Highcharts.chart(chartIdBullReturn, {
         chart: {
-            type: 'bar',
+            type: 'area',
             styledMode: true,
             spacingBottom: 25,
-            spacingRight: 100
+            spacingRight: 100,
+            spacingLeft: 2
         }, 
         title: {
             text: null
         },
         data: {
-            googleSpreadsheetKey: '1YOKb5l2VM4aAB2r20N_1aT_1vEajYrP3U-U3A6lZbC0'
+            googleSpreadsheetKey: '1Jv-5Y6hj-fSXSjCq6sH1aNKLY3ZhmjtpYDE7eVcK6Ds'
         },
         // for bar charts only
         plotOptions: {
@@ -82,11 +83,7 @@ function drawHighcharts() {
         //     }
         // },
         legend: {
-            align: 'right',
-            symbolRadius: 0,
-            verticalAlign: 'top',
-            x: 10,
-            itemMarginTop: -10
+            enabled: false
         },
         xAxis: {
             labels: {
@@ -100,8 +97,14 @@ function drawHighcharts() {
             title: false,
             labels: {
                 useHTML: true,
-                overflow: 'allow'
-            }
+                overflow: 'allow',
+                formatter: function () {
+                    return Highcharts.numberFormat(this.value,0,'.',',');
+                },
+            },
+            max: 3500,
+            min: 0,
+            tickAmount: 8
         },
         credits: {
             enabled: false
@@ -110,6 +113,45 @@ function drawHighcharts() {
             shadow: false,
             padding: 10
         },
+        annotations: [{
+            labels: [{
+                point: {
+                    x: 1581704965000, // timestamp
+                    y: 0, // value
+                    xAxis: 0, // yAxis INDEX
+                    yAxis: 0 // xAxis INDEX
+                },
+                align: 'right',
+                text: 'Bull market<br><b>400.5% gain</b>',
+                y: 0,
+                x: 0,
+                allowOverlap: true
+            }, {
+                point: {
+                    x: 1236364165000, // timestamp
+                    y: 3495, // value
+                    xAxis: 0, // yAxis INDEX
+                    yAxis: 0 // xAxis INDEX
+                },
+                align: 'left',
+                text: 'March 9, 2009',
+                y: 0,
+                x: 0,
+                allowOverlap: true 
+            }, {
+                point: {
+                    x: 1581704965000, // timestamp
+                    y: 3495, // value
+                    xAxis: 0, // yAxis INDEX
+                    yAxis: 0 // xAxis INDEX
+                },
+                align: 'right',
+                text: 'February 19, 2020',
+                y: 0,
+                x: -5,
+                allowOverlap: true 
+            }],
+        }],
         responsive: {
             rules: [{
             condition: {
